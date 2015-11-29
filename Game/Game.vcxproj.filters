@@ -426,4 +426,9 @@
       <Filter>リソース ファイル\Engine\objdetect</Filter>
     </Xml>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ObjBase.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>
