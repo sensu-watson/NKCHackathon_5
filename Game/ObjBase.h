@@ -27,7 +27,7 @@ class ObjBase{
 	virtual int Draw() = 0;
 	virtual int Release() = 0;
 
-}
+};
 
 
 
