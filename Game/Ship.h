@@ -8,15 +8,15 @@
 
 #include"ObjBase.h"
 
-class Ship : public ObjBase {
-
-public:
-	int Init();
-	int Update();
-	int Draw();
-	int Release();
-
-}
+//class Ship : public ObjBase {
+//
+//public:
+//	int Init();
+//	int Update();
+//	int Draw();
+//	int Release();
+//
+//};
 
 
 
