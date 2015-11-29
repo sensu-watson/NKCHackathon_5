@@ -64,6 +64,9 @@
     <Filter Include="リソース ファイル\Engine\fonts\mplus">
       <UniqueIdentifier>{eb29fb68-f1e7-4358-9312-25018b03de31}</UniqueIdentifier>
     </Filter>
+    <Filter Include="リソース ファイル\Image">
+      <UniqueIdentifier>{acd4ee36-564f-4e1b-9f90-dc7a8a2a5dd6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -100,6 +103,15 @@
     </Image>
     <Image Include="Engine\splash.png">
       <Filter>リソース ファイル\Engine</Filter>
+    </Image>
+    <Image Include="Image\lighth.png">
+      <Filter>リソース ファイル\Image</Filter>
+    </Image>
+    <Image Include="Image\lighthouse.png">
+      <Filter>リソース ファイル\Image</Filter>
+    </Image>
+    <Image Include="Image\ship.png">
+      <Filter>リソース ファイル\Image</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>

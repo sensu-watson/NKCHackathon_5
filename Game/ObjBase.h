@@ -1,4 +1,6 @@
 
+#ifndef _OBJBASE
+#define _OBJBASE
 
 //--------------------------------------
 // インクルード
@@ -29,11 +31,9 @@ public:
 	virtual int Draw() = 0;
 	virtual int Release() = 0;
 
-<<<<<<< HEAD
-=======
 	ObjBase() {
 		ObjectList.push_back(this);
-		Init();
+		// Init();
 	};
 
 	~ObjBase() {
@@ -62,13 +62,9 @@ public:
 		return 0;
 	}
 
->>>>>>> refs/remotes/0Delta/master
 };
 
 
 
-
-
-
-
+#endif _OBJBASE
 // EOF

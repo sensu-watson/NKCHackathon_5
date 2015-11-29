@@ -24,6 +24,9 @@
     <Image Include="Example\Well\Well.jpg" />
     <Image Include="Example\Windmill.png" />
     <Image Include="icon.ico" />
+    <Image Include="Image\lighth.png" />
+    <Image Include="Image\lighthouse.png" />
+    <Image Include="Image\ship.png" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="RC.rc" />

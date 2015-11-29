@@ -1,9 +1,10 @@
-﻿2015/11/29 12:14:59 にビルドを開始しました。
+﻿2015/11/29 15:56:23 にビルドを開始しました。
      1>ノード 2 上のプロジェクト "C:\Users\賢\Documents\GitHub\NKCHackathon_5\Game\Game.vcxproj" (Build ターゲット)。
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W4 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Main.cpp
          Main.cpp
-     1>c:\users\賢\documents\github\nkchackathon_5\game\main.cpp(20): warning C4127: 条件式が定数です。
+     1>c:\users\賢\documents\github\nkchackathon_5\game\main.cpp : warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+     1>c:\users\賢\documents\github\nkchackathon_5\game\main.cpp(56): warning C4189: 'light' : ローカル変数が初期化されましたが、参照されていません
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\賢\Documents\GitHub\NKCHackathon_5\Debug\Game.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\賢\Documents\GitHub\NKCHackathon_5\Debug\Game.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\賢\Documents\GitHub\NKCHackathon_5\Debug\Game.lib" /MACHINE:X86 Debug\RC.res
          Debug\Main.obj
@@ -12,4 +13,4 @@
 
 ビルドに成功しました。
 
-経過時間 00:00:47.96
+経過時間 00:00:09.28
