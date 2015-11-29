@@ -21,13 +21,13 @@ class ObjBase{
 
 	ObjBase();
 	~ObjBase();
-	
-	virtual int Init();
-	virtual int Update();
-	virtual int Draw();
-	virtual int Release();
 
-};
+	virtual int Init() = 0;
+	virtual int Update() = 0;
+	virtual int Draw() = 0;
+	virtual int Release() = 0;
+
+}
 
 
 
