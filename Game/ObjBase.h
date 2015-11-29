@@ -1,10 +1,10 @@
 
-#ifndef _OBJBASE
-#define _OBJBASE
-
+#pragma once
 //--------------------------------------
 // インクルード
-#include <bitset>
+#include <list>
+
+#undef DELETE
 
 //--------------------------------------
 // 変数宣言
@@ -21,9 +21,19 @@
 // FncName
 //		Info
 class ObjBase {
-
 private:
+
 	static std::list<ObjBase*> ObjectList;
+
+	enum STATE :short {
+		NOTINIT,
+		READY,
+		DELETE,
+		END,
+	}State;
+	void operator-=(STATE Var) {
+		this->State = Var;
+	}
 
 public:
 	virtual int Init() = 0;
@@ -32,8 +42,8 @@ public:
 	virtual int Release() = 0;
 
 	ObjBase() {
+		State = STATE::NOTINIT;
 		ObjectList.push_back(this);
-		// Init();
 	};
 
 	~ObjBase() {
@@ -41,10 +51,11 @@ public:
 	};
 
 	static void DeleteAll() {
-		for each (auto it in ObjectList)
+		for each (ObjBase* it in ObjectList)
 		{
-			it->Release();
-			delete (it);
+			if ((*it)() == STATE::READY || (*it)() == STATE::DELETE) {
+				it->Release();
+			}
 		}
 	}
 
@@ -52,6 +63,19 @@ public:
 		int ret = 0;
 		for each (auto it in ObjectList)
 		{
+			if ((*it)() == STATE::NOTINIT) {
+				if (it->Init() >= 0) {
+					it -= STATE::READY;
+				}
+			}
+			else if ((*it)() == STATE::DELETE) {
+				it->Release();
+				it -= STATE::END;
+			}
+		}
+		for each (auto it in ObjectList)
+		{
+			if ((*it)() != STATE::READY) { continue; }
 			ret = it->Update();
 			if (ret != 0) { return ret; }
 		}
@@ -62,9 +86,20 @@ public:
 		return 0;
 	}
 
+	static void Clean() {
+		for each (auto it in ObjectList)
+			ObjectList.remove(it);
+	}
+
+	STATE operator()() {
+		return this->State;
+	}
 };
 
 
 
-#endif _OBJBASE
+
+
+
+
 // EOF
