@@ -1,39 +1,35 @@
 #include <Siv3D.hpp>
+#include "Light.h"
 #include "ObjBase.h"
 
 namespace Watson{
-	class Light : ObjBase{
-	private:
-		Texture texture;
-	public:
-		virtual int Init(){
-			Texture T(L"Image/lighth.png");
+	int Light::Init(){
+		Texture T(L"Image/lighth.png");
 
-			if (!T){
-				return -1;
-			}
+		if (!T){
+			return -1;
+		}
 
-			texture = T;
+		texture = T;
 
-			return 0;
-		};
+		return 0;
+	};
 
-		virtual int Update(){
-			return 0;
-		};
+	int Light::Update(){
+		return 0;
+	};
 
-		virtual int Draw(){
-			if (Input::KeySpace.pressed)
-			{
-				texture.draw();
-			}
-			return 0;
-		};
+	int Light::Draw(){
+		if (Input::KeySpace.pressed)
+		{
+			texture.draw();
+		}
+		return 0;
+	};
 
-		virtual int Release(){
-			delete (&texture);
+	int Light::Release(){
+		delete (&texture);
 
-			return 0;
-		};
+		return 0;
 	};
 }

@@ -20,18 +20,21 @@
 //--------------------------------------
 // FncName
 //		Info
+static enum STATE :short {
+	OBJBASE_NOTINIT,
+	OBJBASE_READY,
+	OBJBASE_DELETE,
+	OBJBASE_END,
+};
+
+
 class ObjBase {
 private:
 
 	static std::list<ObjBase*> ObjectList;
+	STATE State;
 
-	enum STATE :short {
-		NOTINIT,
-		READY,
-		DELETE,
-		END,
-	}State;
-	void operator-=(STATE Var) {
+	void SetState(STATE Var) {
 		this->State = Var;
 	}
 
@@ -42,7 +45,7 @@ public:
 	virtual int Release() = 0;
 
 	ObjBase() {
-		State = STATE::NOTINIT;
+		State = STATE::OBJBASE_NOTINIT;
 		ObjectList.push_back(this);
 	};
 
@@ -53,7 +56,7 @@ public:
 	static void DeleteAll() {
 		for each (ObjBase* it in ObjectList)
 		{
-			if ((*it)() == STATE::READY || (*it)() == STATE::DELETE) {
+			if ((*it)() == STATE::OBJBASE_READY || (*it)() == STATE::OBJBASE_DELETE) {
 				it->Release();
 			}
 		}
@@ -63,19 +66,19 @@ public:
 		int ret = 0;
 		for each (auto it in ObjectList)
 		{
-			if ((*it)() == STATE::NOTINIT) {
+			if ((*it)() == STATE::OBJBASE_NOTINIT) {
 				if (it->Init() >= 0) {
-					it -= STATE::READY;
+					it->SetState(STATE::OBJBASE_READY);
 				}
 			}
-			else if ((*it)() == STATE::DELETE) {
+			else if ((*it)() == STATE::OBJBASE_DELETE) {
 				it->Release();
-				it -= STATE::END;
+				it->SetState(STATE::OBJBASE_END);
 			}
 		}
 		for each (auto it in ObjectList)
 		{
-			if ((*it)() != STATE::READY) { continue; }
+			if ((*it)() != STATE::OBJBASE_READY) { continue; }
 			ret = it->Update();
 			if (ret != 0) { return ret; }
 		}
